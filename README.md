@@ -25,7 +25,7 @@ pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple --tru
 
 ```bash
 # 命令格式
-python model_download.py --repo_id
+python model_download.py --repo_id 模型ID
 # 举例
 python model_download.py --repo_id bigscience/mt0-large
 ```
