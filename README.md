@@ -14,6 +14,8 @@ source ~/.bashrc
 ## 2、创建虚拟环境
 
 ```bash
+git clone https://github.com/git-cloner/aliendao
+cd aliendao
 conda create -n aliendao python=3.10 -y
 conda activate aliendao
 pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple --trusted-host=pypi.mirrors.ustc.edu.cn
@@ -22,7 +24,7 @@ pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple --tru
 ## 3、下载
 
 ```bash
-命令格式
+# 命令格式
 python model_download.py --repo_id
 # 举例
 python model_download.py --repo_id bigscience/mt0-large
