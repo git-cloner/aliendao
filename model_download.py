@@ -28,17 +28,33 @@ def _download_model(_repo_id):
         _local_dir_use_symlinks = False
     try:
         snapshot_download(repo_id=_repo_id, cache_dir=_cache_dir, local_dir=_local_dir, local_dir_use_symlinks=_local_dir_use_symlinks,
-                          resume_download=True)
+                          resume_download=True,max_workers=2)
     except Exception as e:
         error_msg = str(e)
         if ("401 Client Error" in error_msg):
             return True, error_msg
         else:
             return False, error_msg
+    _removeHintFile(_local_dir)
     return True, ""
 
 
+def _writeHintFile(_local_dir):
+    file_path = _local_dir + '/~incomplete.txt'
+    if not os.path.exists(file_path):
+        if not os.path.exists(_local_dir):
+            os.makedirs(_local_dir)
+        open(file_path, 'w').close()
+
+
+def _removeHintFile(_local_dir):
+    file_path = _local_dir + '/~incomplete.txt'
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+
 def _check_Completed(_repo_id, _local_dir):
+    _writeHintFile(_local_dir)
     url = 'https://huggingface.co/api/models/' + _repo_id
     response = requests.get(url)
     if response.status_code == 200:
@@ -48,6 +64,7 @@ def _check_Completed(_repo_id, _local_dir):
     for sibling in data["siblings"]:
         if not os.path.exists(_local_dir + "/" + sibling["rfilename"]):
             return False
+    _removeHintFile(_local_dir)
     return True
 
 
