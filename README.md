@@ -24,8 +24,13 @@ pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple --tru
 ## 3、下载
 
 ```bash
-# 命令格式
+conda activate aliendao
+# 下载模型
 python model_download.py --repo_id 模型ID
 # 举例
 python model_download.py --repo_id bigscience/mt0-large
+# 下载数据集
+python model_download.py --repo_id 数据集ID --repo_type dataset
+# 举例
+python model_download.py --repo_id tatsu-lab/alpaca --repo_type dataset
 ```

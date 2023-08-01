@@ -32,7 +32,7 @@ def writeFlagToList(fn, x):
 
 def downloadModelFromHg(model_id):
     print("***** " + model_id + " *****")
-    download_model_retry(model_id)
+    download_model_retry(model_id,"model")
 
 
 if __name__ == '__main__':
