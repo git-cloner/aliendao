@@ -30,15 +30,17 @@ def writeFlagToList(fn, x):
         f.writelines(lines)
 
 
-def downloadModelFromHg(model_id):
+def downloadModelFromHg(model_id,repo_type):
     print("***** " + model_id + " *****")
-    download_model_retry(model_id,"model")
+    download_model_retry(model_id,repo_type)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--listfile', default="model_list.txt", type=str, required=True)
+    parser.add_argument(
+        '--repo_type', default="model", type=str, required=False)
     args = parser.parse_args()
 
     fn = args.listfile
@@ -48,6 +50,6 @@ if __name__ == '__main__':
         if x == -1:
             time.sleep(10)
         else:
-            downloadModelFromHg(model_id)
+            downloadModelFromHg(model_id,args.repo_type)
             writeFlagToList(fn, x)
             time.sleep(10)
