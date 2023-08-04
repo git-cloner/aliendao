@@ -6,17 +6,16 @@ HuggingFace.co资源下载网站，为开发者提供模型镜像加速服务。
 
 **方法1：**从本站下载
 
-- 操作：从本站的models、datasets查找模型或数据集下载
+- 操作：从本站的models、datasets查找模型或数据集下载，下载时建议用复制按钮将下载网址复制到新的标签页下载，这样速度更快。
 
 - 优点：无其他依赖，使用方便
-- 缺点：速度略慢
+- 缺点：需要单个文件逐个下载
 
 **方法2：**用下载器下载
 
-- 操作：按用 https://github.com/git-cloner/aliendao 方法从huggingface官网断点续传下载，简单来说，就是运行：python model_download.py --repo_id 模型ID
-
+- 操作：用 https://github.com/git-cloner/aliendao 方法从huggingface官网断点续传下载，简单来说，就是运行：python model_download.py --repo_id 模型ID
 - 优点：下载速度快
-- 缺点：依赖python和huggingface_hub
+- 缺点：依赖python和huggingface_hub，使用略复杂
 
 #### 模型装载方法
 
