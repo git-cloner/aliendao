@@ -11,14 +11,17 @@ pip install huggingface_hub
 python model_download.py --repo_id 模型ID --mirror
 # 举例
 python model_download.py --repo_id THUDM/chatglm2-6b --mirror
-# 详细用法见：https://github.com/git-cloner/aliendao 
+# 详细用法见：https://github.com/git-cloner/aliendao
+#   利用镜像加速下载
+#   支持断点续传下载
+#   支持无人值守重试
 ```
 
 #### 方法2：从本站页面下载
 
 从本站的models、datasets查找模型或数据集下载，下载时建议用复制按钮将下载网址复制到新的标签页下载，这样速度更快。
 
-### 2、型装载方法
+### 2、模型装载方法
 
 （1）将模型下载到本地文件夹
 
