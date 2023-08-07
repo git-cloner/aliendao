@@ -25,12 +25,14 @@ pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple --tru
 
 ```bash
 conda activate aliendao
-# 下载模型
-python model_download.py --repo_id 模型ID
+# 下载模型，带上mirror优先从镜像下载
+python model_download.py --repo_id 模型ID --mirror
 # 举例
-python model_download.py --repo_id bigscience/mt0-large
+python model_download.py --repo_id bigscience/mt0-large --mirror
 # 下载数据集
-python model_download.py --repo_id 数据集ID --repo_type dataset
+python model_download.py --repo_id 数据集ID --repo_type dataset --mirror
 # 举例
-python model_download.py --repo_id tatsu-lab/alpaca --repo_type dataset
+python model_download.py --repo_id tatsu-lab/alpaca --repo_type dataset --mirror
+
 ```
+
