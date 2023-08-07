@@ -107,9 +107,10 @@ def _download_model_from_mirror(_repo_id, _repo_type):
         return False
     data = json.loads(response.text)
     files = data['files']
-    if '~incomplete.txt' in files:
-        _log(_repo_id, "mirror", 'downloading')
-        return False
+    for file in files:
+        if file['name'] == '~incomplete.txt' :
+            _log(_repo_id, "mirror", 'downloading')
+            return False
     i = 1
     for file in files:
         if file['type'] == 'dir':
