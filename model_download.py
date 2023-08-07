@@ -7,6 +7,8 @@ import json
 import os
 from huggingface_hub import snapshot_download
 import platform
+from tqdm import tqdm
+from urllib.request import urlretrieve
 
 
 def _log(_repo_id, _type, _msg):
@@ -97,10 +99,52 @@ def download_model_retry(_repo_id, _repo_type):
     return flag, msg
 
 
+def _download_model_from_mirror(_repo_id, _repo_type):
+    filesUrl = 'https://www.aliendao.cn/models/' + _repo_id + '?json=true'
+    response = requests.get(filesUrl)
+    if response.status_code != 200:
+        _log(_repo_id, "mirror", str(response.status_code))
+        return False
+    data = json.loads(response.text)
+    files = data['files']
+    if '~incomplete.txt' in files:
+        _log(_repo_id, "mirror", 'downloading')
+        return False
+    i = 1
+    for file in files:
+        if file['type'] == 'dir':
+            i = i + 1
+            continue
+        url = 'http://61.133.217.142:20800/download/' + file['path']
+        file_name = 'dataroot/' + file['path']
+        response = requests.get(url, stream=True)
+        data_size = round(
+            int(response.headers['Content-Length']) / 1024 / 1024)
+        if not os.path.exists(os.path.dirname(file_name)):
+            os.makedirs(os.path.dirname(file_name))
+        _desc = str(i) + ' of ' + str(len(files)) + '(' + file['name'] + ')'
+        i = i + 1
+        with open(file_name, 'wb') as f:
+            for data in tqdm(iterable=response.iter_content(1024 * 1024), total=data_size, desc=_desc, unit='MB'):
+                f.write(data)
+    return True
+
+
+def download_model_from_mirror(_repo_id, _repo_type):
+    if _download_model_from_mirror(_repo_id, _repo_type):
+        return
+    else:
+        return download_model_retry(_repo_id, _repo_type)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--repo_id', default=None, type=str, required=True)
     parser.add_argument('--repo_type', default="model",
                         type=str, required=False)  # models,dataset
+    parser.add_argument('--mirror', action='store_true')
     args = parser.parse_args()
-    download_model_retry(args.repo_id, args.repo_type)
+    if args.mirror:
+        download_model_from_mirror(args.repo_id, args.repo_type)
+    else:
+        download_model_retry(args.repo_id, args.repo_type)
