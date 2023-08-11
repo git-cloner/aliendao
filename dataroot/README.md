@@ -1,6 +1,6 @@
 ## 大语言模型下载站
 
-HuggingFace.co资源下载网站，为开发者提供模型镜像加速服务。
+HuggingFace.co资源下载网站，为AI开发者提供模型镜像加速服务。
 
 ### 1、模型下载方法
 
@@ -11,11 +11,10 @@ pip install huggingface_hub
 python model_download.py --repo_id 模型ID --mirror
 # 举例
 python model_download.py --repo_id THUDM/chatglm2-6b --mirror
-# 详细用法见：https://github.com/git-cloner/aliendao
-#   利用镜像加速下载
-#   支持断点续传下载
-#   支持无人值守重试
+# 详细见：https://github.com/git-cloner/aliendao，镜像加速下载、断点续传、无人值守重试
 ```
+
+![](https://gitclone.com/download1/aliendao/aliendao.gif)
 
 #### 方法2：从本站页面下载
 

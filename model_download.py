@@ -1,5 +1,5 @@
-# usage     : python ./model_download.py --repo_id repo_id
-# example   : python ./model_download.py --repo_id facebook/opt-350m
+# usage     : python model_download.py --repo_id repo_id --mirror
+# example   : python model_download.py --repo_id facebook/opt-350m --mirror
 import argparse
 import time
 import requests
@@ -108,7 +108,7 @@ def _download_model_from_mirror(_repo_id, _repo_type):
     data = json.loads(response.text)
     files = data['files']
     for file in files:
-        if file['name'] == '~incomplete.txt' :
+        if file['name'] == '~incomplete.txt':
             _log(_repo_id, "mirror", 'downloading')
             return False
     i = 1
