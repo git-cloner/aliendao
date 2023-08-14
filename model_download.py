@@ -112,6 +112,7 @@ def _download_model_from_mirror(_repo_id, _repo_type):
             _log(_repo_id, "mirror", 'downloading')
             return False
     i = 1
+    bar_format = '{desc}{percentage:3.0f}%|{bar}|{n_fmt}M/{total_fmt}M [{elapsed}<{remaining}, {rate_fmt}]'
     for file in files:
         if file['type'] == 'dir':
             i = i + 1
@@ -126,7 +127,7 @@ def _download_model_from_mirror(_repo_id, _repo_type):
         _desc = str(i) + ' of ' + str(len(files)) + '(' + file['name'] + ')'
         i = i + 1
         with open(file_name, 'wb') as f:
-            for data in tqdm(iterable=response.iter_content(1024 * 1024), total=data_size, desc=_desc, unit='MB'):
+            for data in tqdm(iterable=response.iter_content(1024 * 1024), total=data_size, desc=_desc, unit='MB', bar_format=bar_format):
                 f.write(data)
     return True
 
