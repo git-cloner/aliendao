@@ -98,7 +98,8 @@ def download_model_retry(_repo_id, _repo_type):
             _log(_repo_id, "retry", str(i))
     return flag, msg
 
-def _fetchFileList(files) :
+
+def _fetchFileList(files):
     _files = []
     for file in files:
         if file['type'] == 'dir':
@@ -107,10 +108,11 @@ def _fetchFileList(files) :
             if response.status_code == 200:
                 data = json.loads(response.text)
                 for file1 in data['files']:
-                     _files.append(file1)
+                    _files.append(file1)
         else:
-            _files.append(file)
-    return  _files  
+            if file['name'] != '.gitattributes':
+                _files.append(file)
+    return _files
 
 
 def _download_model_from_mirror(_repo_id, _repo_type):
