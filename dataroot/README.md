@@ -1,6 +1,8 @@
 ## 大语言模型下载站
 
-HuggingFace.co资源下载网站，为AI开发者提供模型镜像加速服务。
+HuggingFace.co资源下载网站，为AI开发者提供模型镜像加速服务，通过下载器可以达到10M/s的下载速度，解决大模型下载时间长、经常断线、需要反复重试等问题，实现镜像加速、断点续传、无人值守下载，参见 [源码](https://github.com/git-cloner/aliendao) 。
+
+大语言模型的应用，见  [https://gitclone.com/aiit/chat/ ](https://gitclone.com/aiit/chat/) ，可以体验到ChatGLM2-6B、Vicuna-7B、通义千问-7B和LLama2-7B四种模型的服务。
 
 ### 1、模型下载方法
 
@@ -9,9 +11,8 @@ HuggingFace.co资源下载网站，为AI开发者提供模型镜像加速服务�
 ```bash
 pip install huggingface_hub
 python model_download.py --repo_id 模型ID --mirror
-# 举例
-python model_download.py --repo_id THUDM/chatglm2-6b --mirror
-# 详细见：https://github.com/git-cloner/aliendao，镜像加速下载、断点续传、无人值守重试
+# 例如
+python model_download.py --repo_id Qwen/Qwen-7B --mirror
 ```
 
 ![](https://gitclone.com/download1/aliendao/aliendao.gif)
@@ -36,6 +37,6 @@ model = AutoModel.from_pretrained(model_path,trust_remote_code=True).half().cuda
 
 ### 3、其他说明
 
-（1）aliendao.cn的模型资源还在持续同步中，如果模型文件夹中包含~incomplete.txt文件，说明正在同步中，镜像不可用
+（1）aliendao.cn的模型资源还在持续同步中，如果模型文件夹中包含~incomplete.txt文件，说明正在同步中，镜像暂不可用
 
 （2）请勿使用迅雷等工具下载
