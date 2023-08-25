@@ -34,10 +34,10 @@ def _download_model(_repo_id, _repo_type):
     try:
         if _repo_type == "model":
             snapshot_download(repo_id=_repo_id, cache_dir=_cache_dir, local_dir=_local_dir, local_dir_use_symlinks=_local_dir_use_symlinks,
-                              resume_download=True, max_workers=2)
+                              resume_download=True, max_workers=4)
         else:
             snapshot_download(repo_id=_repo_id, cache_dir=_cache_dir, local_dir=_local_dir, local_dir_use_symlinks=_local_dir_use_symlinks,
-                              resume_download=True, max_workers=2, repo_type="dataset")
+                              resume_download=True, max_workers=4, repo_type="dataset")
     except Exception as e:
         error_msg = str(e)
         if ("401 Client Error" in error_msg):
