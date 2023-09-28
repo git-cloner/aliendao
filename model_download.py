@@ -115,7 +115,7 @@ def _fetchFileList(files):
     return _files
 
 
-def _download_model_from_mirror(_repo_id, _repo_type):
+def _download_model_from_mirror(_repo_id, _repo_type, _token):
     filesUrl = 'https://www.aliendao.cn/models/' + _repo_id + '?json=true'
     response = requests.get(filesUrl)
     if response.status_code != 200:
@@ -132,8 +132,15 @@ def _download_model_from_mirror(_repo_id, _repo_type):
     bar_format = '{desc}{percentage:3.0f}%|{bar}|{n_fmt}M/{total_fmt}M [{elapsed}<{remaining}, {rate_fmt}]'
     for file in files:
         url = 'http://61.133.217.142:20800/download/' + file['path']
+        if _token != "":
+            url = 'http://61.133.217.142:20801/download/' + \
+                file['path'] + "?token=" + _token
         file_name = 'dataroot/' + file['path']
         response = requests.get(url, stream=True)
+        if response.status_code == 403:
+            _log(_repo_id,  "error", "aliendao.cn返回异常，拒绝访问资源")
+            return False
+
         data_size = round(
             int(response.headers['Content-Length']) / 1024 / 1024)
         if not os.path.exists(os.path.dirname(file_name)):
@@ -146,8 +153,8 @@ def _download_model_from_mirror(_repo_id, _repo_type):
     return True
 
 
-def download_model_from_mirror(_repo_id, _repo_type):
-    if _download_model_from_mirror(_repo_id, _repo_type):
+def download_model_from_mirror(_repo_id, _repo_type, _token):
+    if _download_model_from_mirror(_repo_id, _repo_type, _token):
         return
     else:
         return download_model_retry(_repo_id, _repo_type)
@@ -159,8 +166,9 @@ if __name__ == '__main__':
     parser.add_argument('--repo_type', default="model",
                         type=str, required=False)  # models,dataset
     parser.add_argument('--mirror', action='store_true')
+    parser.add_argument('--token', default="", type=str, required=False)
     args = parser.parse_args()
     if args.mirror:
-        download_model_from_mirror(args.repo_id, args.repo_type)
+        download_model_from_mirror(args.repo_id, args.repo_type, args.token)
     else:
         download_model_retry(args.repo_id, args.repo_type)
