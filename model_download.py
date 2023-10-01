@@ -103,7 +103,7 @@ def _fetchFileList(files):
     _files = []
     for file in files:
         if file['type'] == 'dir':
-            filesUrl = 'https://www.aliendao.cn/' + file['path'] + '?json=true'
+            filesUrl = 'https://e.aliendao.cn/' + file['path'] + '?json=true'
             response = requests.get(filesUrl)
             if response.status_code == 200:
                 data = json.loads(response.text)
@@ -116,7 +116,7 @@ def _fetchFileList(files):
 
 
 def _download_model_from_mirror(_repo_id, _repo_type, _token):
-    filesUrl = 'https://www.aliendao.cn/models/' + _repo_id + '?json=true'
+    filesUrl = 'https://e.aliendao.cn/models/' + _repo_id + '?json=true'
     response = requests.get(filesUrl)
     if response.status_code != 200:
         _log(_repo_id, "mirror", str(response.status_code))
