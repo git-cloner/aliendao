@@ -18,7 +18,7 @@ pip install huggingface_hub
 python model_download.py --repo_id 模型ID --mirror --token 用户token
 # 例如
 python model_download.py --repo_id Qwen/Qwen-7B --mirror --token KYmXxK0C0UfvFB1
-# token在您的用户信息里可以看到
+# token在您登录e.aliendao.cn后的个人中心可查看（https://e.aliendao.cn/#/user/center）
 ```
 
 ##### 方法2：从本站页面下载
@@ -31,7 +31,7 @@ python model_download.py --repo_id Qwen/Qwen-7B --mirror --token KYmXxK0C0UfvFB1
 git clone http://61.133.217.142:20801/用户token/github.com/用户名/仓库名
 # 例如
 git clone http://61.133.217.142:20801/KYmXxK0C0UfvFB1/github.com/git-cloner/gitcache
-# token在您的用户信息里可以看到
+# token在您登录e.aliendao.cn后的个人中心可查看（https://e.aliendao.cn/#/user/center）
 ```
 
 ### 二、下载后处理方法说明
