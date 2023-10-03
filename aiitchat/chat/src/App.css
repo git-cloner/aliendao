@@ -1,0 +1,116 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+code {
+  background-color: #d7d7d7;
+  padding: 4px 0.5em;
+  margin: 0 4px;
+  -webkit-text-size-adjust: none;
+  overflow-x: auto;
+  white-space: pre;
+  border-radius: 8px;
+  font-size: 85%;
+}
+.Message-content pre{
+  margin: 0;
+}
+.Message-content pre>code {
+  background-color: #d7d7d7;
+  padding: 1em;
+  display: block;
+  -webkit-text-size-adjust: none;
+  overflow-x: auto;
+  white-space: pre;
+  border: 1px solid #d1d0d0;
+}
+
+.qr-code-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.qr-code-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+}
+.auto-completion{
+  position: absolute;
+  left: 20px;
+  bottom: 60px;
+  z-index: 999;
+  background: #e2e2e2;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
+  padding: 10px 0;
+}
+.auto-completion ul{
+  padding: 0;
+  margin: 0;
+}
+.auto-completion ul li{
+  list-style: none;
+  padding: 8px 20px;
+  margin: 0;
+}
+.auto-completion ul li.active{
+  color: #ff5903;
+  background-color: #d1d0d0;
+}
+.auto-completion i.close{
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 15px;
+  border: 1px solid #bfbfbf;
+  border-radius: 100%;
+  background: #818181;
+  color: white;
+}
