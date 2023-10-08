@@ -3,9 +3,21 @@ import json
 import datetime
 import hashlib
 
-def getAnswerFromChatGLM6b_v2(contextx):
+
+def checkToken(token):
+    if token is None:
+        token = ""
+    url = "http://172.16.62.157:8001/-/user/check_vip?token=" + token
+    r = requests.get(url)
+    return (r.status_code == 200)
+
+
+def getAnswerFromChatGLM6b_v2(contextx, token):
     data = json.dumps(contextx)
-    url = get_bal_url(contextx["prompt"])
+    if checkToken(token):
+        url = "http://172.16.62.137:8001/stream"
+    else:
+        url = get_bal_url(contextx["prompt"])
     headers = {'content-type': 'application/json;charset=utf-8'}
     r = requests.post(url, data=data, headers=headers)
     res = r.json()

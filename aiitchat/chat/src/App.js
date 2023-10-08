@@ -144,7 +144,7 @@ function App() {
       return;
     }
     let xhr = new XMLHttpRequest();
-    xhr.open('post', 'https://chat.aliendao.cn/api/stream/v2');
+    xhr.open('post', 'https://chat.aliendao.cn/api/stream/v2?token='+token);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       var json;

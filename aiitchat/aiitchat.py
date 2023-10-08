@@ -27,6 +27,7 @@ def filter_context(context):
 
 
 async def stream_v2(request):
+    token = request.query.get('token')
     params = await request.json()
     context = params["context"]
     modelname = params["modelname"]
@@ -51,7 +52,7 @@ async def stream_v2(request):
     if modelname == 'Qwen-7b':
         result = getAnswerFromQwen7b_v2(context)
     else:
-        result = getAnswerFromChatGLM6b_v2(context)
+        result = getAnswerFromChatGLM6b_v2(context,token)
     stop = result["response"] .endswith("[stop]")
     if result["response"] == "":
         result["response"] = "思考中"
@@ -70,7 +71,7 @@ async def stream_v2(request):
 
 app = web.Application()
 cors = aiohttp_cors.setup(app)
-app.router.add_post("/api/stream/v2?token=" + token, stream_v2)
+app.router.add_post("/api/stream/v2", stream_v2)
 
 for route in list(app.router.routes()):
     cors.add(route, {
