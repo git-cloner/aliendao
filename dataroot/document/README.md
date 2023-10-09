@@ -1,8 +1,77 @@
-### aliendao.cn介绍
+## aliendao.cn文档
 
-aliendao.cn（异形开源）是 huggingface.co（抱脸虫）资源的镜像网站，提供了常用的一些模型和数据集的下载服务。
+aliendao.cn（异形开源）是 huggingface.co（抱脸虫）资源的镜像网站，提供了常用的一些模型和数据集的下载服务。aliendao.cn的企业版e.aliendao.cn，提供了模型/数据集的下载、github仓库下载加速、高性能聊天和推理API服务。
 
-### 大语言模型资源
+### 大语言模型应用API
+
+| 参数  | 说明                                                         |
+| ----- | ------------------------------------------------------------ |
+| URL   | https://chat.aliendao.cn/api/stream/v2?token=您的token       |
+| token | 登录e.aliendao.cn后的个人中心可查看（https://e.aliendao.cn/#/user/center） |
+| 请求  | POST，application/json                                       |
+
+#### 发起
+
+```json
+{
+    "context":{
+        "prompt":"问题",
+        "history":[
+        ]
+    },
+    "modelname":"模型名称"
+}
+```
+
+#### 说明
+
+```shell
+prompt：问题
+history：二维数组，每一维是由问、答组成
+modelname：有两个取值：ChatGLM-6b和Qwen-7b
+```
+
+#### 举例
+
+```json
+{
+    "context":{
+        "prompt":"你好",
+        "history":[
+            [
+                "你好",
+                "你好! 我是人工智能助手 ChatGLM-6B，很高兴见到你，欢迎问我任何问题。"
+            ],
+            [
+                "你好",
+                "你好!有什么我可以都助你的吗"
+            ]
+        ]
+    },
+    "modelname":"ChatGLM-6b"
+}
+```
+
+#### 返回
+
+```json
+{
+    "response": "你好👋！我是人工智能助手 ChatGLM2-6B，很高兴见到你，欢迎问我任何问题。",
+    "history": [
+        [
+            "你好",
+            "你好👋！我是人工智能助手 ChatGLM2-6B，很高兴见到你，欢迎问我任何问题。"
+        ]
+    ],
+    "status": 200,
+    "time": 0.012832192936912179,
+    "stop": true
+}
+```
+
+**注意：需要多次调用，直到stop为true停止调用**
+
+### 大语言模型相关文章
 
 |         类别         | 链接                                                 | 说明                         |
 | :-------------------: | ---------------------------------------------------- | ---------------------------- |
