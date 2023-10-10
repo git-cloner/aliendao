@@ -122,7 +122,7 @@ def _download_model_from_mirror(_repo_id, _repo_type, _token):
         _log(_repo_id, "mirror", str(response.status_code))
         return False
     data = json.loads(response.text)
-    files = data['files']
+    files = data['data']['files']
     for file in files:
         if file['name'] == '~incomplete.txt':
             _log(_repo_id, "mirror", 'downloading')
