@@ -107,7 +107,7 @@ def _fetchFileList(files):
             response = requests.get(filesUrl)
             if response.status_code == 200:
                 data = json.loads(response.text)
-                for file1 in data['files']:
+                for file1 in data['data']['files']:
                     _files.append(file1)
         else:
             if file['name'] != '.gitattributes':
