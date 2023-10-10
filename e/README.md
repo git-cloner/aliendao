@@ -1,14 +1,22 @@
 ## 异型岛企业版
 
-e.aliendao.cn是异型岛（aliendao.cn）的企业版，提供更快、更稳定的下载速度和专用GPU服务。
+e.aliendao.cn是异型岛（aliendao.cn）的企业版，相对于社区版，提供更多、更稳定、更快速的服务。
 
- * 更快更稳定的huggingface模型下载
- * 及时更新的huggingface模型镜像
- * 更快的github仓库clone
- * 专用的GPU chat及API服务
- * 更完善的个性化服务
+### 一、服务介绍
 
-### 一、服务使用说明
+#### 1、大模型镜像快速下载
+
+提供专用的带宽资源，实现更快、更稳定的huggingface模型下载。
+
+#### 2、github镜像加速
+
+提供专用的带宽资源，使用git clone命令加速，实现更快的github仓库clone。
+
+#### 3、GPU推理服务
+
+提供web版的chat服务[https://chat.aliendao.cn](https://chat.aliendao.cn) 及API，使用专用的GPU资源。
+
+### 二、使用说明
 
 #### 1、大模型镜像
 
@@ -39,7 +47,7 @@ git clone http://61.133.217.142:20801/KYmXxK0C0UfvFB1/github.com/git-cloner/gitc
 
 [https://e.aliendao.cn/document](https://e.aliendao.cn/document)
 
-### 二、下载后处理方法说明
+### 三、下载后处理方法说明
 
 #### 1、大模型装载方法
 
@@ -64,7 +72,7 @@ model = AutoModel.from_pretrained(model_path,trust_remote_code=True).half().cuda
 就可以正常的git pull和git push
 ```
 
-### 三、其他说明
+### 四、其他说明
 
 （1）e.aliendao.cn的模型资源还在持续同步中，如果模型文件夹中包含~incomplete.txt文件，说明正在同步中，镜像暂不可用
 
