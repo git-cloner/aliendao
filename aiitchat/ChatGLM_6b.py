@@ -7,7 +7,7 @@ import hashlib
 def checkToken(token):
     if token is None:
         token = ""
-    url = "http://172.16.62.157:8001/-/user/check_vip?token=" + token
+    url = "http://172.16.62.157:8001/-/user/check_vip?token=" + token + '&sid=c'
     r = requests.get(url)
     return (r.status_code == 200)
 
@@ -29,11 +29,12 @@ def getAnswerFromChatGLM6b_v2(contextx, token):
 
 
 def get_bal_url(prompt):
-    hash = hash_string(prompt)[0]
-    if hash in "abcdefghijklm01234":
-        return 'http://172.16.62.136:8000/stream'
-    else:
-        return 'http://172.16.62.137:8001/stream'
+    return 'http://172.16.62.136:8000/stream'
+    #hash = hash_string(prompt)[0]
+    #if hash in "abcdefghijklm01234":
+    #    return 'http://172.16.62.136:8000/stream'
+    #else:
+    #    return 'http://172.16.62.137:8001/stream'
 
 
 def hash_string(text):
