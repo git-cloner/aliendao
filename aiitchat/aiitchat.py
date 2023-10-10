@@ -10,6 +10,7 @@ from Qwen_7b import getAnswerFromQwen7b_v2
 
 filter_string = None
 
+
 def filter_context(context):
     global filter_string
     if filter_string is None:
@@ -26,12 +27,23 @@ def filter_context(context):
     return False
 
 
+def checkToken(token):
+    if token is None:
+        token = ""
+    if token == "":
+        token = ""
+    url = "http://172.16.62.157:8001/-/user/check_vip?token=" + token + '&sid=c'
+    r = requests.get(url)
+    return (r.status_code == 200)
+
+
 async def stream_v2(request):
     token = request.query.get('token')
     params = await request.json()
     context = params["context"]
     modelname = params["modelname"]
     prompt = context["prompt"]
+    validtoken = checkToken(token)
     # filter
     if filter_context(prompt):
         return web.Response(
@@ -52,12 +64,14 @@ async def stream_v2(request):
     if modelname == 'Qwen-7b':
         result = getAnswerFromQwen7b_v2(context)
     else:
-        result = getAnswerFromChatGLM6b_v2(context,token)
+        result = getAnswerFromChatGLM6b_v2(context, validtoken)
     stop = result["response"] .endswith("[stop]")
     if result["response"] == "":
         result["response"] = "思考中"
     if stop:
         result["response"] = result["response"].replace("[stop]", "")
+    if not validtoken:
+        result["response"] = result["response"] + "[无效token]"
     end = time.perf_counter()
     result["time"] = end-start
     result["stop"] = stop
