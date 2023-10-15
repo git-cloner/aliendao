@@ -8,15 +8,11 @@ e.aliendao.cn是异型岛（aliendao.cn）的企业版，相对于社区版，�
 
 提供专用的带宽资源，实现更快、更稳定的huggingface模型下载。
 
-#### 2、github镜像加速
-
-提供专用的带宽资源，使用git clone命令加速，实现更快的github仓库clone。
-
-#### 3、GPU推理服务
+#### 2、GPU推理服务
 
 提供web版的chat服务[https://chat.aliendao.cn](https://chat.aliendao.cn) 及API，使用专用的GPU资源。
 
-#### 4、客户服务
+#### 3、客户服务
 
 请发邮件至 gitclone@126.com
 
@@ -38,22 +34,11 @@ python model_download.py --repo_id Qwen/Qwen-7B --mirror --token KYmXxK0C0UfvFB1
 
 从本站的models、datasets查找模型或数据集下载，下载时用复制按钮将下载网址复制到新的标签页下载，下载的url中带有token信息。
 
-#### 2、github镜像
-
-```shell
-git clone http://61.133.217.142:20801/用户token/github.com/用户名/仓库名
-# 例如
-git clone http://61.133.217.142:20801/KYmXxK0C0UfvFB1/github.com/git-cloner/gitcache
-# token在您登录e.aliendao.cn后的个人中心可查看（https://e.aliendao.cn/#/user/center）
-```
-
-#### 3、Aiit-Chat
+#### 2、Aiit-Chat
 
 [https://e.aliendao.cn/document](https://e.aliendao.cn/document)
 
-### 三、下载后处理方法说明
-
-#### 1、大模型装载方法
+### 三、大模型装载方法
 
 （1）将模型下载到本地文件夹
 
@@ -65,15 +50,6 @@ git clone http://61.133.217.142:20801/KYmXxK0C0UfvFB1/github.com/git-cloner/gitc
 model_path = "./model/"           #从本地文件夹装载模型的方法
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 model = AutoModel.from_pretrained(model_path,trust_remote_code=True).half().cuda()
-```
-
-#### 2、仓库提交方法
-
-从本站clone的仓库，不能直接提交到github，如果需要提交，可使用以下方法解决：
-
-```shell
-修改.git/config文件的url为原始路径，如：https://github.com/用户名/仓库名
-就可以正常的git pull和git push
 ```
 
 ### 四、其他说明

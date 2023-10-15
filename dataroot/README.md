@@ -2,10 +2,6 @@
 
 aliendao.cn（异型岛社区版）是HuggingFace资源下载网站，为AI开发者提供模型镜像加速服务，通过下载器可以提高下载速度，解决大模型下载时间长、经常断线、需要反复重试等问题，实现镜像加速、断点续传、无人值守下载，参见 [源码](https://github.com/git-cloner/aliendao) 。
 
-大语言模型的应用，见  [https://chat.aliendao.cn ](https://chat.aliendao.cn/) ，可以体验到ChatGLM2-6B、通义千问-7B两种模型的及专用算力服务。
-
-如果需要更快、更稳定的下载速度以及github镜像加速服务，请访问 https://e.aliendao.cn （**异型岛企业版**）。
-
 ### 1、重要提醒
 
 （1）开源资源有限，网站对每个IP限制了两个并发连接
