@@ -24,10 +24,11 @@ e.aliendao.cn是异型岛（aliendao.cn）的企业版，相对于社区版，�
 
 ```shell
 pip install huggingface_hub
-python model_download.py --repo_id 模型ID --mirror --token 用户token
+python model_download.py -e --repo_id 模型ID --token 用户token
 # 例如
-python model_download.py --repo_id Qwen/Qwen-7B --mirror --token KYmXxK0C0UfvFB1
+python model_download.py -e --repo_id Qwen/Qwen-7B --token KYmXxK0C0UfvFB1
 # token在您登录e.aliendao.cn后的个人中心可查看（https://e.aliendao.cn/#/user/center）
+# -e表示是企业版下载，下载地址有别于社区版
 ```
 
 ##### 方法2：从本站页面下载
