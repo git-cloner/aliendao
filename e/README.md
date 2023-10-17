@@ -14,7 +14,7 @@ e.aliendao.cn是异型岛（aliendao.cn）的企业版，相对于社区版，�
 
 #### 3、客户服务
 
-请发邮件至 gitclone@126.com
+客户服务、商务合作请发邮件至 gitclone@126.com
 
 ### 二、使用说明
 
