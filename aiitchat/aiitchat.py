@@ -32,7 +32,7 @@ def checkToken(token):
         token = ""
     if token == "":
         token = ""
-    url = "http://172.16.62.157:8001/-/user/check_vip?token=" + token + '&sid=c'
+    url = "http://172.16.65.157:8001/-/user/check_vip?token=" + token + '&sid=c'
     r = requests.get(url)
     return (r.status_code == 200)
 
