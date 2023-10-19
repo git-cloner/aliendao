@@ -2,6 +2,7 @@ import time
 import argparse
 
 from model_download import download_model_retry
+from model_mirror import make_mirror
 
 
 def readTaskFromList(fn):
@@ -30,9 +31,14 @@ def writeFlagToList(fn, x):
         f.writelines(lines)
 
 
-def downloadModelFromHg(model_id,repo_type):
+def downloadModelFromHg(model_id, repo_type):
     print("***** " + model_id + " *****")
-    download_model_retry(model_id,repo_type)
+    download_model_retry(model_id, repo_type)
+
+
+def mirrorModel(_root, model_id):
+    print("***** " + model_id + " *****")
+    make_mirror(_root, model_id)
 
 
 if __name__ == '__main__':
@@ -41,6 +47,8 @@ if __name__ == '__main__':
         '--listfile', default="model_list.txt", type=str, required=True)
     parser.add_argument(
         '--repo_type', default="model", type=str, required=False)
+    parser.add_argument(
+        '--mirror_root', default="", type=str, required=False)
     args = parser.parse_args()
 
     fn = args.listfile
@@ -50,6 +58,9 @@ if __name__ == '__main__':
         if x == -1:
             time.sleep(10)
         else:
-            downloadModelFromHg(model_id,args.repo_type)
+            if args.mirror_root != "":
+                mirrorModel(args.mirror_root, model_id)
+            else:
+                downloadModelFromHg(model_id, args.repo_type)
             writeFlagToList(fn, x)
             time.sleep(10)
