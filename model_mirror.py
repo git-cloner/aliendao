@@ -28,8 +28,14 @@ def get_links(url):
             get_links(href)
 
 
-def write_listfiles():
-    with open('files.txt', 'w') as f:
+def getFileNameFromRepoid(_repo_id):
+    _, temp = _repo_id.split("/")
+    return temp + '.txt'
+
+
+def write_listfiles(_repo_id):
+    fileName = getFileNameFromRepoid(_repo_id)
+    with open(fileName, 'w') as f:
         for link in all_links:
             f.write(link + '\n')
 
@@ -49,10 +55,12 @@ def _removeHintFile(_local_dir):
 
 
 def download_files(_repo_id):
+    fileName = getFileNameFromRepoid(_repo_id)
     _local_dir = 'dataroot/models/' + _repo_id
     _writeHintFile(_local_dir)
     command = ['aria2c', '-x', '16', '-c', '-d',
-               _local_dir, '--input-file=files.txt']
+               _local_dir, '--input-file=' + fileName]
+    print(command)
     proc = subprocess.Popen(command, stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT)
     while True:
@@ -68,8 +76,9 @@ def download_files(_repo_id):
 
 def make_mirror(_root, repo_id):
     url = _root + "/download/models/" + repo_id + "/"
+    all_links.clear()
     get_links(url)
-    write_listfiles()
+    write_listfiles(repo_id)
     download_files(repo_id)
 
 
