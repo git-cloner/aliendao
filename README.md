@@ -1,4 +1,4 @@
-# 从Huggingface下载模型（断点续传）
+# 从Huggingface下载模型（支持断点续传）
 
 ## 1、安装python虚拟环境
 

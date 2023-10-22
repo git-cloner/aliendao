@@ -115,6 +115,37 @@ def _fetchFileList(files):
     return _files
 
 
+def _download_file_resumable(url, save_path, i, j, chunk_size=1024*1024):
+    headers = {}
+    r = requests.get(url, headers=headers, stream=True, timeout=(20, 60))
+    if r.status_code == 403:
+        return False
+    bar_format = '{desc}{percentage:3.0f}%|{bar}|{n_fmt}M/{total_fmt}M [{elapsed}<{remaining}, {rate_fmt}]'
+    _desc = str(i) + ' of ' + str(j) + '(' + save_path.split('/')[-1] + ')'
+    total_length = int(r.headers.get('content-length'))
+    if os.path.exists(save_path):
+        temp_size = os.path.getsize(save_path)
+    else:
+        temp_size = 0
+    retries = 0
+    if temp_size >= total_length:
+        return True
+
+    headers['Range'] = f'bytes={temp_size}-{total_length}'
+    r = requests.get(url, headers=headers, stream=True,
+                     verify=False, timeout=(20, 60))
+    data_size = round(total_length / 1024 / 1024)
+    with open(save_path, 'ab') as fd:
+        fd.seek(temp_size)
+        initial = temp_size//chunk_size
+        for chunk in tqdm(iterable=r.iter_content(chunk_size=chunk_size), initial=initial, total=data_size, desc=_desc, unit='MB', bar_format=bar_format):
+            if chunk:
+                temp_size += len(chunk)
+                fd.write(chunk)
+                fd.flush()
+    return True
+
+
 def _download_model_from_mirror(_repo_id, _repo_type, _token, _e):
     filesUrl = 'https://e.aliendao.cn/models/' + _repo_id + '?json=true'
     response = requests.get(filesUrl)
@@ -129,27 +160,17 @@ def _download_model_from_mirror(_repo_id, _repo_type, _token, _e):
             return False
     files = _fetchFileList(files)
     i = 1
-    bar_format = '{desc}{percentage:3.0f}%|{bar}|{n_fmt}M/{total_fmt}M [{elapsed}<{remaining}, {rate_fmt}]'
     for file in files:
         url = 'http://61.133.217.142:20800/download/' + file['path']
         if _e:
             url = 'http://61.133.217.139:20800/download/' + \
                 file['path'] + "?token=" + _token
         file_name = 'dataroot/' + file['path']
-        response = requests.get(url, stream=True)
-        if response.status_code == 403:
-            _log(_repo_id,  "error", "aliendao.cn返回异常，拒绝访问资源")
-            return False
-
-        data_size = round(
-            int(response.headers['Content-Length']) / 1024 / 1024)
         if not os.path.exists(os.path.dirname(file_name)):
             os.makedirs(os.path.dirname(file_name))
-        _desc = str(i) + ' of ' + str(len(files)) + '(' + file['name'] + ')'
         i = i + 1
-        with open(file_name, 'wb') as f:
-            for data in tqdm(iterable=response.iter_content(1024 * 1024), total=data_size, desc=_desc, unit='MB', bar_format=bar_format):
-                f.write(data)
+        if not _download_file_resumable(url, file_name, i, len(files)):
+            return False
     return True
 
 
