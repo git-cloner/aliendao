@@ -29,8 +29,9 @@ def get_links(url):
 
 
 def getFileNameFromRepoid(_repo_id):
-    _, temp = _repo_id.split("/")
-    return temp + '.txt'
+    #_, temp = _repo_id.split("/")
+    #return temp + '.txt'
+    return "files.txt"
 
 
 def write_listfiles(_repo_id):
