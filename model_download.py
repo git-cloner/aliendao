@@ -130,19 +130,27 @@ def _download_file_resumable(url, save_path, i, j, chunk_size=1024*1024):
     retries = 0
     if temp_size >= total_length:
         return True
-
-    headers['Range'] = f'bytes={temp_size}-{total_length}'
-    r = requests.get(url, headers=headers, stream=True,
-                     verify=False, timeout=(20, 60))
-    data_size = round(total_length / 1024 / 1024)
-    with open(save_path, 'ab') as fd:
-        fd.seek(temp_size)
-        initial = temp_size//chunk_size
-        for chunk in tqdm(iterable=r.iter_content(chunk_size=chunk_size), initial=initial, total=data_size, desc=_desc, unit='MB', bar_format=bar_format):
-            if chunk:
-                temp_size += len(chunk)
-                fd.write(chunk)
-                fd.flush()
+    # 小文件显示
+    if total_length < chunk_size:
+        with open(save_path, 'wb') as f:
+            for chunk in r.iter_content(chunk_size=chunk_size):
+                if chunk:
+                    f.write(chunk)
+        with tqdm(total=1, desc=_desc, unit='MB', bar_format=bar_format) as pbar:
+            pbar.update(1)
+    else:
+        headers['Range'] = f'bytes={temp_size}-{total_length}'
+        r = requests.get(url, headers=headers, stream=True,
+                         verify=False, timeout=(20, 60))
+        data_size = round(total_length / 1024 / 1024)
+        with open(save_path, 'ab') as fd:
+            fd.seek(temp_size)
+            initial = temp_size//chunk_size
+            for chunk in tqdm(iterable=r.iter_content(chunk_size=chunk_size), initial=initial, total=data_size, desc=_desc, unit='MB', bar_format=bar_format):
+                if chunk:
+                    temp_size += len(chunk)
+                    fd.write(chunk)
+                    fd.flush()
     return True
 
 
