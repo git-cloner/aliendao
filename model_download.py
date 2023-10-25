@@ -155,7 +155,10 @@ def _download_file_resumable(url, save_path, i, j, chunk_size=1024*1024):
 
 
 def _download_model_from_mirror(_repo_id, _repo_type, _token, _e):
-    filesUrl = 'https://e.aliendao.cn/models/' + _repo_id + '?json=true'
+    if _repo_type == "model":
+        filesUrl = 'https://e.aliendao.cn/models/' + _repo_id + '?json=true'
+    else:
+        filesUrl = 'https://e.aliendao.cn/datasets/' + _repo_id + '?json=true'
     response = requests.get(filesUrl)
     if response.status_code != 200:
         _log(_repo_id, "mirror", str(response.status_code))
