@@ -1,6 +1,12 @@
-# 从Huggingface下载模型（支持断点续传）
+# 从hf或镜像下载模型
 
-## 1、安装python虚拟环境
+## 1、简介
+
+- 从hf下载模型（支持断点续传）
+- 从aliendao.cn下载模型（支持断点续传）
+- chat服务源码（调用国产大模型）
+
+## 2、安装python虚拟环境
 
 ```bash
 # windows到Anaconda官网下载安装
@@ -11,7 +17,7 @@ chmod +x Anaconda3-2022.10-Linux-x86_64.sh
 source ~/.bashrc
 ```
 
-## 2、创建虚拟环境
+## 3、创建虚拟环境
 
 ```bash
 git clone https://github.com/git-cloner/aliendao
@@ -21,7 +27,7 @@ conda activate aliendao
 pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple --trusted-host=pypi.mirrors.ustc.edu.cn
 ```
 
-## 3、下载
+## 4、下载
 
 ```bash
 conda activate aliendao
