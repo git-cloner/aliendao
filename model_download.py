@@ -108,7 +108,16 @@ def _fetchFileList(files):
             if response.status_code == 200:
                 data = json.loads(response.text)
                 for file1 in data['data']['files']:
-                    _files.append(file1)
+                    if file1['type'] == 'dir':
+                        filesUrl = 'https://e.aliendao.cn/' + \
+                            file1['path'] + '?json=true'
+                        response = requests.get(filesUrl)
+                        if response.status_code == 200:
+                            data = json.loads(response.text)
+                            for file2 in data['data']['files']:
+                                _files.append(file2)
+                    else:
+                        _files.append(file1)
         else:
             if file['name'] != '.gitattributes':
                 _files.append(file)
@@ -172,7 +181,7 @@ def _download_model_from_mirror(_repo_id, _repo_type, _token, _e):
     files = _fetchFileList(files)
     i = 1
     for file in files:
-        url = 'http://61.133.217.142:20800/download/' + file['path']
+        url = 'http://61.133.217.140:20800/download/' + file['path']
         if _e:
             url = 'http://61.133.217.139:20800/download/' + \
                 file['path'] + "?token=" + _token
