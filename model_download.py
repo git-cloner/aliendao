@@ -181,9 +181,9 @@ def _download_model_from_mirror(_repo_id, _repo_type, _token, _e):
     files = _fetchFileList(files)
     i = 1
     for file in files:
-        url = 'http://61.133.217.142:20800/download/' + file['path']
+        url = 'http://61.133.217.142:20800/download' + file['path']
         if _e:
-            url = 'http://61.133.217.139:20800/download/' + \
+            url = 'http://61.133.217.139:20800/download' + \
                 file['path'] + "?token=" + _token
         file_name = 'dataroot/' + file['path']
         if not os.path.exists(os.path.dirname(file_name)):
