@@ -29,16 +29,15 @@ def get_links(url):
 
 
 def getFileNameFromRepoid(_repo_id):
-    #_, temp = _repo_id.split("/")
-    #return temp + '.txt'
     return "files.txt"
 
 
-def write_listfiles(_repo_id):
+def write_listfiles(_repo_id, baseurl):
     fileName = getFileNameFromRepoid(_repo_id)
     with open(fileName, 'w') as f:
         for link in all_links:
             f.write(link + '\n')
+            f.write(" out=" + link.replace(baseurl, "")+'\n')
 
 
 def _writeHintFile(_local_dir):
@@ -79,7 +78,7 @@ def make_mirror(_root, repo_id):
     url = _root + "/download/models/" + repo_id + "/"
     all_links.clear()
     get_links(url)
-    write_listfiles(repo_id)
+    write_listfiles(repo_id, url)
     download_files(repo_id)
 
 
