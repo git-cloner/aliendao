@@ -54,9 +54,9 @@ def _removeHintFile(_local_dir):
         os.remove(file_path)
 
 
-def download_files(_repo_id):
+def download_files(_repo_id, repo_type):
     fileName = getFileNameFromRepoid(_repo_id)
-    _local_dir = 'dataroot/models/' + _repo_id
+    _local_dir = 'dataroot/' + repo_type + 's/' + _repo_id
     _writeHintFile(_local_dir)
     command = ['aria2c', '-x', '16', '-c', '-d',
                _local_dir, '--input-file=' + fileName]
@@ -74,17 +74,19 @@ def download_files(_repo_id):
     _removeHintFile(_local_dir)
 
 
-def make_mirror(_root, repo_id):
-    url = _root + "/download/models/" + repo_id + "/"
+def make_mirror(_root, repo_id, repo_type):
+    url = _root + "/download/" + repo_type + "s/" + repo_id + "/"
     all_links.clear()
     get_links(url)
     write_listfiles(repo_id, url)
-    download_files(repo_id)
+    download_files(repo_id, repo_type)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--root', default=None, type=str, required=True)
     parser.add_argument('--repo_id', default=None, type=str, required=True)
+    parser.add_argument(
+        '--repo_type', default="model", type=str, required=False)
     args = parser.parse_args()
-    make_mirror(args.root, args.repo_id)
+    make_mirror(args.root, args.repo_id, args.repo_type)

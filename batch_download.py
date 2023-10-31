@@ -36,9 +36,9 @@ def downloadModelFromHg(model_id, repo_type):
     download_model_retry(model_id, repo_type)
 
 
-def mirrorModel(_root, model_id):
+def mirrorModel(_root, model_id, repo_type):
     print("***** " + model_id + " *****")
-    make_mirror(_root, model_id)
+    make_mirror(_root, model_id, repo_type)
 
 
 if __name__ == '__main__':
@@ -59,7 +59,7 @@ if __name__ == '__main__':
             time.sleep(10)
         else:
             if args.mirror_root != "":
-                mirrorModel(args.mirror_root, model_id)
+                mirrorModel(args.mirror_root, model_id, args.repo_type)
             else:
                 downloadModelFromHg(model_id, args.repo_type)
             writeFlagToList(fn, x)
