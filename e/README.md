@@ -33,6 +33,7 @@ python model_download.py -e --repo_id 模型ID --token 用户token
 python model_download.py -e --repo_id Qwen/Qwen-7B --token KYmXxK0C0UfvFB1
 # token在您登录e.aliendao.cn后的个人中心可查看（https://e.aliendao.cn/#/user/center）
 # -e表示是企业版下载，下载地址有别于社区版
+# model_download.py的获取：从本站首页点击文件链接，另存即可（不要复制链接下载！）
 ```
 
 ##### 方法2：从本站页面下载

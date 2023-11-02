@@ -128,6 +128,7 @@ def _download_file_resumable(url, save_path, i, j, chunk_size=1024*1024):
     headers = {}
     r = requests.get(url, headers=headers, stream=True, timeout=(20, 60))
     if r.status_code == 403:
+        _log(url, "download", '下载资源发生了错误，请使用正确的token')
         return False
     bar_format = '{desc}{percentage:3.0f}%|{bar}|{n_fmt}M/{total_fmt}M [{elapsed}<{remaining}, {rate_fmt}]'
     _desc = str(i) + ' of ' + str(j) + '(' + save_path.split('/')[-1] + ')'
