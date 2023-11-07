@@ -8,6 +8,8 @@ e.aliendao.cn是异型岛（aliendao.cn）的企业版，相对于社区版，�
 
 提供专用的带宽资源，实现更快、更稳定的huggingface模型下载。由于宽带资源有限，下载资源需要登录并支付流量包费用，价格约为 1元/G 。
 
+[ChatGLM](https://e.aliendao.cn/models/THUDM)  [Qwen](https://e.aliendao.cn/models/Qwen)  [Stable-diffusion](https://e.aliendao.cn/models/stabilityai)  [Meta-llama](https://e.aliendao.cn/models/NousResearch)  [Baichuan](https://e.aliendao.cn/models/baichuan-inc)  [Thebloke](https://e.aliendao.cn/models/TheBloke)  [Microsoft](https://e.aliendao.cn/models/microsoft)  [Runwayml](https://e.aliendao.cn/models/runwayml)  [Openai](https://e.aliendao.cn/models/openai)  [FastChat](https://e.aliendao.cn/models/lmsys)  [EleutherAI](https://e.aliendao.cn/models/EleutherAI)  [Yi](https://e.aliendao.cn/models/01-ai)  [Google](https://e.aliendao.cn/models/google)  [Amazon](https://e.aliendao.cn/models/amazon)  [Bloom](https://e.aliendao.cn/models/bigscience)
+
 #### 2、GPU推理服务
 
 提供web版的chat服务[https://chat.aliendao.cn](https://chat.aliendao.cn) 及API，使用专用的GPU资源。
