@@ -199,7 +199,8 @@ def download_model_from_mirror(_repo_id, _repo_type, _token, _e):
     if _download_model_from_mirror(_repo_id, _repo_type, _token, _e):
         return
     else:
-        return download_model_retry(_repo_id, _repo_type)
+        #return download_model_retry(_repo_id, _repo_type)
+        _log(_repo_id, "download", '下载资源发生了错误，请使用正确的token')
 
 
 if __name__ == '__main__':

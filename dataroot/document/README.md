@@ -8,6 +8,8 @@ aliendao.cn（异形开源）是 huggingface.co（抱脸虫）资源的镜像网
 | :-------------------: | ---------------------------------------------------- | ---------------------------- |
 |        autogen        | https://zhuanlan.zhihu.com/p/663031095               | AutoGen+Chatglm2-6b实践（一）              |
 | autogen | https://zhuanlan.zhihu.com/p/663238122 | AutoGen+Chatglm2-6b实践（二） |
+| autogen | https://zhuanlan.zhihu.com/p/664598518 | AutoGen+Chatglm2-6b实践（三） |
+| autogen | https://zhuanlan.zhihu.com/p/665328453 | AutoGen+Chatglm2-6b实践（四） |
 | huggingface | https://huggingface.co/ | 全球最大的开源代码交流平台 |
 | gitclone        		| https://gitclone.com                                 | 国内最大的github镜像网站     |
 | aiit-chat       		| https://gitclone.com/aiit/chat/                      | gitclone发布的chat网站       |
@@ -40,6 +42,8 @@ aliendao.cn（异形开源）是 huggingface.co（抱脸虫）资源的镜像网
 - 确保model_download.py为最新的，因为新的程序支持断点续传，如果发生意外断开可在上次下载的基础上继续下载
 
 - 确认是否安装了conda环境，是否安装了huggingface_hub
+
+- 如果wget、用脚本下载、从浏览器下载，都返回403，测说明token不对或未付费
 
 ### 大语言模型应用API
 
