@@ -12,13 +12,13 @@
 
 ### 1、模型下载方法
 
-#### 方法1：用下载器下载
+#### 方法1：用下载器  [model_donwload.py](https://e.aliendao.cn/model_download.py) 下载
 
 ```bash
 pip install huggingface_hub
-python model_download.py --repo_id 模型ID --mirror
+python model_download.py --repo_id 模型ID
 # 例如
-python model_download.py --repo_id Qwen/Qwen-7B --mirror
+python model_download.py --repo_id Qwen/Qwen-7B
 ```
 
 ![](https://gitclone.com/download1/aliendao/aliendao.gif)

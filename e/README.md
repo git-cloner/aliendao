@@ -26,7 +26,7 @@ e.aliendao.cn是异型岛（aliendao.cn）的企业版，相对于社区版，�
 
 #### 1、大模型镜像
 
-##### 方法1：用下载器下载
+##### 方法1：用下载器  [model_download](https://e.aliendao.cn/model_download.py) 下载
 
 ```shell
 pip install huggingface_hub
