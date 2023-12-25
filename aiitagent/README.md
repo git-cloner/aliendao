@@ -40,6 +40,7 @@ cd autogenv2
 pip install fastapi -i https://mirrors.aliyun.com/pypi/simple/
 pip install uvicorn -i https://mirrors.aliyun.com/pypi/simple/
 pip install -e . -i https://mirrors.aliyun.com/pypi/simple/
+pip install docker -i https://mirrors.aliyun.com/pypi/simple/
 ```
 
 ## 4、Run agent api server
