@@ -132,7 +132,11 @@ def _download_file_resumable(url, save_path, i, j, chunk_size=1024*1024):
         return False
     bar_format = '{desc}{percentage:3.0f}%|{bar}|{n_fmt}M/{total_fmt}M [{elapsed}<{remaining}, {rate_fmt}]'
     _desc = str(i) + ' of ' + str(j) + '(' + save_path.split('/')[-1] + ')'
-    total_length = int(r.headers.get('content-length'))
+    if r.headers.get('content-length') is not None :
+        total_length = int(r.headers.get('content-length'))
+    else:
+        _log(url, "download", 'url不正确')
+        return False
     if os.path.exists(save_path):
         temp_size = os.path.getsize(save_path)
     else:
