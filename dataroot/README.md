@@ -10,7 +10,7 @@
 - 更多、更全、更新的Dataset
 - 更快下载速度（*2M/s ~ **40**M/s*）
 - 节省您的宝贵时间
--  [gemma](https://e.aliendao.cn/models/alpindale) [ChatGLM](https://e.aliendao.cn/models/THUDM)  [Qwen](https://e.aliendao.cn/models/Qwen)  [Stable-diffusion](https://e.aliendao.cn/models/stabilityai)  [Meta-llama](https://e.aliendao.cn/models/NousResearch)  [Baichuan](https://e.aliendao.cn/models/baichuan-inc)  [Thebloke](https://e.aliendao.cn/models/TheBloke)  [Microsoft](https://e.aliendao.cn/models/microsoft)  [Runwayml](https://e.aliendao.cn/models/runwayml)  [Openai](https://e.aliendao.cn/models/openai)  [FastChat](https://e.aliendao.cn/models/lmsys)  [EleutherAI](https://e.aliendao.cn/models/EleutherAI)  [Yi](https://e.aliendao.cn/models/01-ai)  [Google](https://e.aliendao.cn/models/google)  [Amazon](https://e.aliendao.cn/models/amazon)  [Bloom](https://e.aliendao.cn/models/bigscience)
+-  [gemma](https://e.aliendao.cn/models/alpindale) [ChatGLM](https://e.aliendao.cn/models/THUDM)  [Qwen](https://e.aliendao.cn/models/Qwen)  [Stable-diffusion](https://e.aliendao.cn/models/stabilityai)  [Meta-llama](https://e.aliendao.cn/models/NousResearch)  [Baichuan](https://e.aliendao.cn/models/baichuan-inc)  [Thebloke](https://e.aliendao.cn/models/TheBloke)  [Microsoft](https://e.aliendao.cn/models/microsoft)  [Runwayml](https://e.aliendao.cn/models/runwayml)  [Openai](https://e.aliendao.cn/models/openai)  [FastChat](https://e.aliendao.cn/models/lmsys)  [EleutherAI](https://e.aliendao.cn/models/EleutherAI)  [Yi](https://e.aliendao.cn/models/01-ai)  [Google](https://e.aliendao.cn/models/google)  [Amazon](https://e.aliendao.cn/models/amazon)  [Bloom](https://e.aliendao.cn/models/bigscience)  [Llama-3](https://e.aliendao.cn/models/NousResearch)
 
 ### 1、模型下载方法
 
