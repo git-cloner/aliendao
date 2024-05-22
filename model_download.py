@@ -9,6 +9,7 @@ from huggingface_hub import snapshot_download
 import platform
 from tqdm import tqdm
 from urllib.request import urlretrieve
+import math
 
 
 def _log(_repo_id, _type, _msg):
@@ -156,7 +157,7 @@ def _download_file_resumable(url, save_path, i, j, chunk_size=1024*1024):
         headers['Range'] = f'bytes={temp_size}-{total_length}'
         r = requests.get(url, headers=headers, stream=True,
                          verify=False, timeout=(20, 60))
-        data_size = round(total_length / 1024 / 1024)
+        data_size = math.ceil(total_length / 1024 / 1024)
         with open(save_path, 'ab') as fd:
             fd.seek(temp_size)
             initial = temp_size//chunk_size
@@ -183,6 +184,7 @@ def _download_model_from_mirror(_repo_id, _repo_type, _token, _e):
         if file['name'] == '~incomplete.txt':
             _log(_repo_id, "mirror", 'downloading')
             return False
+    _log(_repo_id, "download", '开始从aliendao.cn下载文件')
     files = _fetchFileList(files)
     i = 1
     for file in files:
