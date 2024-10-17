@@ -4,6 +4,8 @@
 
 基于大语言模型的AI小镇在 [https://gitclone.com/ai-town/](https://gitclone.com/ai-town/)
 
+作者的新书：[大模型项目实战：多领域智能应用](https://github.com/little51/llm-dev)
+
 #### 请访问 [异型岛企业版](https://e.aliendao.cn) 获得更好的体验
 
 - 更多、更全、更新的Model

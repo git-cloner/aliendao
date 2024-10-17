@@ -1,6 +1,7 @@
 ## 异型岛企业版
 
 e.aliendao.cn是异型岛（aliendao.cn）的企业版，相对于社区版，提供更多、更稳定、更快速的服务。
+作者的新书：[大模型项目实战：多领域智能应用](https://github.com/little51/llm-dev)
 
 ### 一、服务介绍
 

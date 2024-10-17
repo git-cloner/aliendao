@@ -1,10 +1,14 @@
-# 从hf或镜像下载模型
+# 从hf或Aliendao.cn镜像下载模型
 
 ## 1、简介
 
 - 从hf下载模型（支持断点续传）
 - 从aliendao.cn下载模型（支持断点续传）
 - chat服务源码（调用国产大模型）
+- 作者的新书
+[图书官方直营：https://item.jd.com/14810472.html](https://item.jd.com/14810472.html)
+
+![图书](https://gitclone.com/download1/llm-dev/llm-dev.png) ![网店链接](https://gitclone.com/download1/llm-dev/qr-code.png)
 
 ## 2、安装python虚拟环境
 
