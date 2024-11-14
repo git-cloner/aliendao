@@ -39,5 +39,13 @@ sudo docker push localhost:5000/aicode
 # 在其他机器运行测试
 sudo docker pull 172.16.62.37:5000/aicode
 sudo docker run -p 8501:8501 -it 172.16.62.37:5000/aicode
+# 用Podman测试
+# 安装Podman
+sudo apt-get update
+sudo apt-get -y install podman
+podman --version
+# 测试
+podman pull 172.16.62.37:5000/aicode --tls-verify=false
+podman run -p 8501:8501 -it 172.16.62.37:5000/aicode
 ```
 
