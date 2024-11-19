@@ -1,12 +1,16 @@
 ## 异型岛社区版
 
-异型岛社区版是HuggingFace资源下载网站，为AI开发者提供模型下载服务，通过下载器可以提高下载速度，解决大模型下载时间长、经常断线、需要反复重试等问题，实现镜像加速、断点续传、无人值守下载。本项目下载器的源码在 [github.com/git-cloner/aliendao](https://github.com/git-cloner/aliendao)
+异型岛社区版是HuggingFace资源下载网站，为AI开发者提供模型下载服务，通过下载器可以提高下载速度，解决大模型下载时间长、经常断线、需要反复重试等问题，实现镜像加速、断点续传、无人值守下载。
 
-基于大语言模型的AI小镇在 [https://gitclone.com/ai-town/](https://gitclone.com/ai-town/)
 
-作者的新书：[大模型项目实战：多领域智能应用](https://github.com/little51/llm-dev)
 
-#### 请访问 [异型岛企业版](https://e.aliendao.cn) 获得更好的体验
+**作者的新书及配套资源**：[大模型项目实战：多领域智能应用](https://github.com/little51/llm-dev)
+
+**一键体验众多AI Agent**：[AI Agent Hub](https://gitclone.com/aiit/agenthub/)
+
+
+
+#### 访问 [异型岛企业版](https://e.aliendao.cn) 获得更好的体验
 
 - 更多、更全、更新的Model
 - 更多、更全、更新的Dataset
