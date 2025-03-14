@@ -54,4 +54,4 @@ model = AutoModel.from_pretrained(model_path,trust_remote_code=True).half().cuda
 
 [图书官方直营：https://item.jd.com/14810472.html](https://item.jd.com/14810472.html)
 
-![图书](https://gitclone.com/download1/llm-dev/llm-dev.png) ![网店链接](https://gitclone.com/download1/llm-dev/qr-code.png)
+![图书](https://gitclone.com/download1/llm-dev/llm-dev.png) ![网店链接](https://gitclone.com/download1/llm-dev/qr-code.png) ![图书](https://gitclone.com/download1/ai-agent/agent-dev1.png) 
