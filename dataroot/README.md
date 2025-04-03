@@ -4,11 +4,19 @@
 
 
 
-**作者的新书及配套资源**：[大模型项目实战：多领域智能应用](https://github.com/little51/llm-dev)
+**作者新书及配套资源**：[《大模型项目实战：多领域智能应用》](https://github.com/little51/llm-dev)
+
+**作者新书及配套资源**：[《大模型项目实战：Agent开发与应用》](https://github.com/little51/agent-dev)
+
+### 技术交流群
+
+![](https://gitclone.com/download1/aliendao/aliendao1.jpg)
+
+### 异型岛公众号（学习资源分享）
+
+![](https://gitclone.com/download1/aliendao/weixin-aliendao.jpg)
 
 **一键体验众多AI Agent**：[AI Agent Hub](https://gitclone.com/aiit/agenthub/)
-
-
 
 #### 访问 [异型岛企业版](https://e.aliendao.cn) 获得更好的体验
 
